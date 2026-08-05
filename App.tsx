@@ -289,7 +289,7 @@ function RepMgr({onClose}){
               )}
               {!isLocal()&&(
                 <div style={{marginTop:14,padding:"12px 14px",background:"#edf7ed",borderRadius:6,fontSize:12,color:DARK,lineHeight:1.6}}>
-                  <strong>✓ Running on Netlify.</strong> The API key is stored securely as a server environment variable — no key entry needed here. If AI polish isn't working, check that <code>ANTHROPIC_KEY</code> is set in your Netlify site's Environment Variables settings.
+                  <strong>Running on Netlify.</strong> AI polish uses a secure server function with your <code>ANTHROPIC_KEY</code> environment variable. If that's not working, enter your API key above as a fallback — it will be used directly from the browser.
                 </div>
               )}
             </div>
