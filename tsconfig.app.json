@@ -19,5 +19,5 @@
     "jsx": "react-jsx",
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["."]
+  "include": ["src"]
 }
