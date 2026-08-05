@@ -282,14 +282,14 @@ function RepMgr({onClose}){
                   {testMsg}
                 </div>
               )}
-              {isLocal()&&(
-                <div style={{marginTop:14,padding:"12px 14px",background:"#fffde7",borderRadius:6,fontSize:11,color:"#7a6000",lineHeight:1.6}}>
-                  <strong>Running locally?</strong> Make sure your vite.config.ts has the Anthropic proxy block. The API key above is used for local development only — on Netlify the key is stored server-side.
+              {getEnvKey()&&(
+                <div style={{marginTop:10,padding:"8px 12px",background:"#edf7ed",borderRadius:6,fontSize:12,color:DARK}}>
+                  ✓ API key is active via environment variable — AI polish is ready.
                 </div>
               )}
-              {!isLocal()&&(
-                <div style={{marginTop:14,padding:"12px 14px",background:"#edf7ed",borderRadius:6,fontSize:12,color:DARK,lineHeight:1.6}}>
-                  <strong>Running on Netlify.</strong> AI polish uses a secure server function with your <code>ANTHROPIC_KEY</code> environment variable. If that's not working, enter your API key above as a fallback — it will be used directly from the browser.
+              {!getEnvKey()&&(
+                <div style={{marginTop:10,padding:"8px 12px",background:"#fffde7",borderRadius:6,fontSize:11,color:"#7a6000",lineHeight:1.5}}>
+                  No environment key detected. Enter your key above, or set <code>VITE_ANTHROPIC_KEY</code> in Netlify environment variables for all users.
                 </div>
               )}
             </div>
@@ -388,7 +388,7 @@ export default function App(){
        [pasteOpen,setPasteOpen]=useState(false);
 
   const refreshReps=()=>{setReps(loadReps());setBranchList(loadBranches());};
-  const hasKey=!!getApiKey();
+  const hasKey=!!(getEnvKey()||getApiKey());
 
   const pickRep=id=>{
     setRepId(id);
